@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS JSON_STRING_TABLE;
+CREATE EXTERNAL TABLE JSON_STRING_TABLE (JSON STRING)
+	LOCATION '/user/root/';
+	
+SELECT DISTINCT get_json_object(JSON, '$.user.name') AS usrname,
+ get_json_object(JSON, '$.user.userlocation') AS usrlocation,
+ get_json_object(JSON, '$.tweetmessage') AS text	
+  FROM JSON_STRING_TABLE;

@@ -1,0 +1,38 @@
+### HDP 2.3 ONLY, user is a reserved word, must use set command below with 
+### create and select
+SET hive.support.sql11.reserved.keywords=false;
+
+upload JAR file into /tmp/udfs on hdfs
+
+SELECT "California" as State;
+
+CREATE TEMPORARY FUNCTION getRegionUS AS 'com.hortonworks.hive.SimpleUDFgetRegionUS'
+USING JAR 'hdfs:///tmp/udfs/HiveSimpleUdf-1.0-SNAPSHOT.jar';
+
+LIST JARS;
+
+SELECT "California" as State, getRegionUS("California") as Region;
+
+DROP FUNCTION getRegionsUS;
+
+CREATE FUNCTION getRegionUS AS 'com.hortonworks.hive.SimpleUDFgetRegionUS' 
+USING JAR 'hdfs:///tmp/udfs/HiveSimpleUdf-1.0-SNAPSHOT.jar';
+
+LIST JARS;
+
+SELECT DISTINCT getRegionUS(split(user.userlocation, ",")[0]) FROM TWEETS;
+
+***************
+on HDP 2.3
+MUST USE HIVE SHELL, doesn't work in beeline yet
+
+hive> ADD JAR HiveSimpleUdf-1.0-SNAPSHOT.jar;
+hive> LIST JARS;
+hive> create function getRegionUS as 'com.hortonworks.hive.SimpleUDFgetRegionUS';
+hive> SET hive.support.sql11.reserved.keywords=false;
+hive> SELECT getRegionUS(split(user.userlocation, ",")[0]) FROM TWEETS;
+
+****************
+SELECT "CALIFORNIA";
+SELECT getRegionUS("CALIFORNIA");
+

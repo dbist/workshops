@@ -1,0 +1,23 @@
+1.
+
+SET hive.support.sql11.reserved.keywords=false;
+DROP TABLE IF EXISTS tweets;
+
+CREATE EXTERNAL TABLE tweets (
+  createddate string,
+  geolocation string,
+  tweetmessage string,
+  `user` struct<geoenabled:boolean, id:int, name:string, screenname:string, userlocation:string>)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+LOCATION '/user/root/';
+
+2. 
+
+SET hive.support.sql11.reserved.keywords=false;
+SELECT DISTINCT tweetmessage, user.name, createddate
+FROM tweets WHERE user.name = 'Hortonworks'
+ORDER BY createddate;
+
+
+
+

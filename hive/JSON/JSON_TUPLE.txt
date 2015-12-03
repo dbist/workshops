@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS JSON_STRING_TABLE;
+CREATE EXTERNAL TABLE JSON_STRING_TABLE (JSON STRING)
+	LOCATION '/user/admin/';
+
+SELECT name, screenname, tweetmessage FROM JSON_STRING_TABLE a 
+	LATERAL VIEW json_tuple(a.json, 'user', 'tweetmessage') b AS usr, tweetmessage
+	LATERAL VIEW json_tuple(usr, 'name', 'screenname') c AS name, screenname;

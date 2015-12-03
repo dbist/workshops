@@ -1,0 +1,48 @@
+{
+  "user": {
+    "userlocation": "California, Santa Clara",
+    "id": 222222,
+    "name": "Hortonworks",
+    "screenname": "hortonworks",
+    "geoenabled": true
+  },
+  "tweetmessage": "Learn more about #Spark in #HDP 2.3 with @Hortonworks founder @acmurthy in this video overview http://bit.ly/1gOyr9w  #hadoop",
+  "createddate": "2015-07-24T16:30:33",
+  "geolocation": null
+}
+{
+  "user": {
+    "userlocation": "New York, Brooklyn",
+    "id": 1111111,
+    "name": "Artem",
+    "screenname": "dbist",
+    "geoenabled": false
+  },
+  "tweetmessage": "HDP 2.3 is like XMas in July @hortonworks",
+  "createddate": "2015-07-22T11:57:14",
+  "geolocation": null
+}
+{
+  "user": {
+    "userlocation": "California, Santa Clara",
+    "id": 222222,
+    "name": "Hortonworks",
+    "screenname": "hortonworks",
+    "geoenabled": true
+  },
+  "tweetmessage": "Introducing Availability of HDP 2.3 – Part 2: Data Access Innovation http://bit.ly/1gTl2NF  #hadoop #hdp #OpenEnterpriseHadoop",
+  "createddate": "2015-07-24T16:39:10",
+  "geolocation": null
+}
+{
+  "user": {
+    "userlocation": "California, Santa Clara",
+    "id": 222222,
+    "name": "Hortonworks",
+    "screenname": "hortonworks",
+    "geoenabled": true
+  },
+  "tweetmessage": "Fuel for the #OpenEnterpriseHadoop fire, NEW release of #HDP 2.3 is now available!  #HDP23. Download it now http://bit.ly/1JDlgmb",
+  "createddate": "2015-07-24T16:35:11",
+  "geolocation": null
+}
