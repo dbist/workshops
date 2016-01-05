@@ -19,7 +19,6 @@ public class Replace extends UDF {
 	return new Text(s.toString().replace('e', 'E')) \;
   }
 } ` AS GROOVY NAMED Replace.groovy;
-
 ```
 
 ##### now create a temporary function to leverage the Groovy UDF
@@ -33,6 +32,8 @@ CREATE TEMPORARY FUNCTION Replace as 'Replace';
 ```
 SELECT Replace(description) FROM sample_08 limit 5;
 ```
+
+##### full example
 
 ```
 hive> compile `import org.apache.hadoop.hive.ql.exec.UDF \;
