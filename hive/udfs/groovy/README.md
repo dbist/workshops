@@ -66,9 +66,8 @@ public class JsonExtract extends UDF {
 } ` AS GROOVY NAMED json_extract.groovy;
 
 CREATE TEMPORARY FUNCTION json_extract as 'JsonExtract';
-
 SELECT json_extract('{"val1": 2}') from date_dim limit 1;
-OK
+
 2
 ```
 
@@ -80,7 +79,9 @@ public class Pyth extends UDF {
 	return Math.sqrt((a*a) + (b*b)) \;
   }
 } ` AS GROOVY NAMED Pyth.groovy;
+
 CREATE TEMPORARY FUNCTION Pyth as 'Pyth';
 SELECT Pyth(3,4) FROM src limit 1;
+
 5.0
 ```
