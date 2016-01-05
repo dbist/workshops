@@ -48,7 +48,6 @@ public class Duplicate extends UDF {
 } ` AS GROOVY NAMED Duplicate.groovy;
 
 CREATE TEMPORARY FUNCTION Duplicate as 'Duplicate';
-
 SELECT Duplicate(description) FROM sample_08 limit 5;
 ```
 
