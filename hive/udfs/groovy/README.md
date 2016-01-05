@@ -1,6 +1,6 @@
 # Groovy UDF example
 #### Can be compiled at run time
-##### Currently only works in "hive" shell, not working in beeline
+##### Currently only works in "hive" shell, does not work in beeline
 
 ```
 su guest
@@ -8,7 +8,7 @@ hive
 ```
 
 ##### paste the following code into the hive shell
-# this will use Groovy String replace function to replace all instances of lower case 'e' with 'E'
+##### this will use Groovy String replace function to replace all instances of lower case 'e' with 'E'
 
 ```
 compile `import org.apache.hadoop.hive.ql.exec.UDF \;
