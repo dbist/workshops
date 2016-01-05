@@ -34,6 +34,31 @@ CREATE TEMPORARY FUNCTION Replace as 'Replace';
 SELECT Replace(description) FROM sample_08 limit 5;
 ```
 
+```
+hive> compile `import org.apache.hadoop.hive.ql.exec.UDF \;
+    > import org.apache.hadoop.io.Text \;
+    > public class Replace extends UDF {
+    >   public Text evaluate(Text s){
+    >     if (s == null) return null \;
+    >     return new Text(s.toString().replace('e', 'E')) \;
+    >   }
+    > } ` AS GROOVY NAMED Replace.groovy;
+Added [/tmp/0_1452022176763.jar] to class path
+Added resources: [/tmp/0_1452022176763.jar]
+hive> CREATE TEMPORARY FUNCTION Replace as 'Replace';
+OK
+Time taken: 1.201 seconds
+hive> SELECT Replace(description) FROM sample_08 limit 5;
+OK
+All Occupations
+ManagEmEnt occupations
+ChiEf ExEcutivEs
+GEnEral and opErations managErs
+LEgislators
+Time taken: 6.373 seconds, Fetched: 5 row(s)
+hive>
+```
+
 #### Another example
 ##### this will duplicate any String passed to the function
 
@@ -49,6 +74,12 @@ public class Duplicate extends UDF {
 
 CREATE TEMPORARY FUNCTION Duplicate as 'Duplicate';
 SELECT Duplicate(description) FROM sample_08 limit 5;
+
+All OccupationsAll Occupations
+Management occupationsManagement occupations
+Chief executivesChief executives
+General and operations managersGeneral and operations managers
+LegislatorsLegislators
 ```
 
 #### JSON Parsing UDF
