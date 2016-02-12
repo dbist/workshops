@@ -14,4 +14,4 @@ vboxmanage modifyvm "$SANDBOX_OLD_NAME" --name $SANDBOX_NEW_NAME
 vboxmanage modifyvm HDF --nic2 hostonly --hostonlyadapter1 vboxnet0
 
 # start VM
-vboxmanage startvm $SANDBOX_NEW_NAME --type headless
+# vboxmanage startvm $SANDBOX_NEW_NAME --type headless
