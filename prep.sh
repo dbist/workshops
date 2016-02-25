@@ -11,7 +11,7 @@ vboxmanage import --options keepallmacs $SANDBOX_FILE
 vboxmanage modifyvm "$SANDBOX_OLD_NAME" --name $SANDBOX_NEW_NAME
 
 # add second NIC
-vboxmanage modifyvm HDF --nic2 hostonly --hostonlyadapter1 vboxnet0
+vboxmanage modifyvm $SANDBOX_NEW_NAME --nic2 hostonly --hostonlyadapter1 vboxnet0
 
 # start VM
 # vboxmanage startvm $SANDBOX_NEW_NAME --type headless
