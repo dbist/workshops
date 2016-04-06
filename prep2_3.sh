@@ -1,7 +1,7 @@
 # bug in adding second interface, needs more work, until then, start manually
 
-SANDBOX_FILE=~/Downloads/Sandbox24.ova
-SANDBOX_OLD_NAME="Hortonworks Sandbox with HDP 2.4"
+SANDBOX_FILE=~/Downloads/HDP_2.3.2_virtualbox.ova
+SANDBOX_OLD_NAME="Hortonworks Sandbox with HDP 2.3.2"
 SANDBOX_NEW_NAME=$1
 
 # import appliance
