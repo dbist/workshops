@@ -1,4 +1,4 @@
-HDF_VERSION=1.2.0.0-91
+HDF_VERSION=HDF-1.2.0.0-91
 HDF_VERSION_SHORT=1.2.0.0
 
 # create directories for local FileSystem
