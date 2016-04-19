@@ -53,4 +53,6 @@ mysql -u root -p -e "select count(user) from mysql.user;"
 ```
 sudo -u hdfs hdfs dfs -mkdir /tmp/rdbms
 sudo -u hdfs hdfs dfs -chown -R nifi:nifi /tmp/rdbms
-``` 
+```
+
+#### nifi workflow consists of ExecuteSQL, MergeContent and PutHDFS 
