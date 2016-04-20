@@ -7,7 +7,7 @@
 
 # download the latest HDF release
 cd ~
-# wget http://public-repo-1.hortonworks.com.s3.amazonaws.com/HDF/centos6/1.x/updates/1.2.0.0/HDF-1.2.0.0-91.tar.gz
+wget http://public-repo-1.hortonworks.com.s3.amazonaws.com/HDF/centos6/1.x/updates/1.2.0.0/HDF-1.2.0.0-91.tar.gz
 tar xvzf HDF-1.2.0.0-91.tar.gz && cd HDF-1.2.0.0/nifi/conf
 
 # replace nifi port 8080 to 9090
