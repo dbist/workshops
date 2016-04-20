@@ -67,7 +67,7 @@ sudo -u hdfs hdfs dfs -chown -R nifi:nifi /tmp/rdbms
 
 #### nifi workflow consists of ExecuteSQL, MergeContent and PutHDFS 
 
-#### then create schema for hive table (WORK IN PROGRESS)
+#### then create schema for hive table
 ```
 CREATE DATABASE DEMO;
 USE DEMO;
