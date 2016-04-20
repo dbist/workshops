@@ -69,10 +69,112 @@ sudo -u hdfs hdfs dfs -chown -R nifi:nifi /tmp/rdbms
 
 #### then create schema for hive table (WORK IN PROGRESS)
 ```
-create database demo;
-use demo;
-create external table mailinglist (id string, first_name string, last_name string, email string, gender string) stored as avro location '/tmp/rdbms';
-
-create external table if not exists mailinglist (id string, first_name string, last_name string, email string, gender string) location '/tmp/rdbms';
+CREATE DATABASE DEMO;
+USE DEMO;
+CREATE EXTERNAL TABLE mailinglist
+  COMMENT "just drop the schema right into the HQL"
+  ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
+  STORED AS INPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+  OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+  LOCATION '/tmp/rdbms'
+  TBLPROPERTIES (
+    'avro.schema.literal'='{
+      "type": "record",
+      "name": "mailinglist",
+      "namespace": "any.data",
+      "fields": [
+        {
+          "name": "id",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "first_name",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "last_name",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "email",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "gender",
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      ]
+    }');
 ```
 
+#### now schema is created on top of the landing files and you can query Hive as you wish
+```
+USE DEMO;
+SELECT * FROM MAILINGLIST LIMIT 100;
+```
+
+```
+[root@sandbox ~]# beeline
+WARNING: Use "yarn jar" to launch YARN applications.
+Beeline version 1.2.1000.2.4.0.0-169 by Apache Hive
+beeline> !connect jdbc:hive2://localhost:10000
+Connecting to jdbc:hive2://localhost:10000
+Enter username for jdbc:hive2://localhost:10000:
+Enter password for jdbc:hive2://localhost:10000:
+Connected to: Apache Hive (version 1.2.1000.2.4.0.0-169)
+Driver: Hive JDBC (version 1.2.1000.2.4.0.0-169)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://localhost:10000> use demo;
+No rows affected (0.177 seconds)
+0: jdbc:hive2://localhost:10000> select * from mailinglist limit 10;
++-----------------+-------------------------+------------------------+--------------------------------+---------------------+--+
+| mailinglist.id  | mailinglist.first_name  | mailinglist.last_name  |       mailinglist.email        | mailinglist.gender  |
++-----------------+-------------------------+------------------------+--------------------------------+---------------------+--+
+| 0               | first_name              | last_name              | email                          | gender              |
+| 1               | Bruce                   | Palmer                 | bpalmer0@accuweather.com       | Male                |
+| 2               | Walter                  | Mason                  | wmason1@umich.edu              | Male                |
+| 3               | Kelly                   | Burke                  | kburke2@google.nl              | Female              |
+| 4               | Juan                    | Barnes                 | jbarnes3@github.com            | Male                |
+| 5               | Ashley                  | Hanson                 | ahanson4@1und1.de              | Female              |
+| 6               | Antonio                 | Collins                | acollins5@creativecommons.org  | Male                |
+| 7               | Maria                   | Green                  | mgreen6@google.nl              | Female              |
+| 8               | Heather                 | Carter                 | hcarter7@google.co.jp          | Female              |
+| 9               | Kenneth                 | Sanchez                | ksanchez8@indiegogo.com        | Male                |
++-----------------+-------------------------+------------------------+--------------------------------+---------------------+--+
+10 rows selected (0.545 seconds)
+0: jdbc:hive2://localhost:10000> select email from mailinglist limit 10;
++--------------------------------+--+
+|             email              |
++--------------------------------+--+
+| email                          |
+| bpalmer0@accuweather.com       |
+| wmason1@umich.edu              |
+| kburke2@google.nl              |
+| jbarnes3@github.com            |
+| ahanson4@1und1.de              |
+| acollins5@creativecommons.org  |
+| mgreen6@google.nl              |
+| hcarter7@google.co.jp          |
+| ksanchez8@indiegogo.com        |
++--------------------------------+--+
+10 rows selected (0.565 seconds)
+0: jdbc:hive2://localhost:10000>
+```
