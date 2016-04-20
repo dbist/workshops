@@ -66,3 +66,13 @@ sudo -u hdfs hdfs dfs -chown -R nifi:nifi /tmp/rdbms
 ```
 
 #### nifi workflow consists of ExecuteSQL, MergeContent and PutHDFS 
+
+#### then create schema for hive table (WORK IN PROGRESS)
+```
+create database demo;
+use demo;
+create external table mailinglist (id string, first_name string, last_name string, email string, gender string) stored as avro location '/tmp/rdbms';
+
+create external table if not exists mailinglist (id string, first_name string, last_name string, email string, gender string) location '/tmp/rdbms';
+```
+
