@@ -48,6 +48,14 @@ exit;
 ```
 mysql -u root -p -e "select count(user) from mysql.user;"
 ```
+```
+Enter password:
++-------------+
+| count(user) |
++-------------+
+|           9 |
++-------------+
+```
 
 #### create sample hdfs directory
 ```
