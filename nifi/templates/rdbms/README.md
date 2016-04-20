@@ -55,6 +55,8 @@ Enter password:
 +-------------+
 |           9 |
 +-------------+
+
+exit
 ```
 
 #### create sample hdfs directory
