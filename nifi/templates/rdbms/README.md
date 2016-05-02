@@ -179,4 +179,4 @@ No rows affected (0.177 seconds)
 0: jdbc:hive2://localhost:10000>
 ```
 ##### finished workflow
-![Image](../master/screenshots/finished_workflow.png)
+![Image](https://github.com/dbist/workshops/blob/master/nifi/templates/rdbms/screenshots/finished_workflow.png "finished workflow")
