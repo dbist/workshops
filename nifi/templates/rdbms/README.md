@@ -178,3 +178,5 @@ No rows affected (0.177 seconds)
 10 rows selected (0.565 seconds)
 0: jdbc:hive2://localhost:10000>
 ```
+##### finished workflow
+![Image](../screenshots/finished_workflow.png?raw=true)
