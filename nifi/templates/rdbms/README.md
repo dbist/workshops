@@ -178,5 +178,8 @@ No rows affected (0.177 seconds)
 10 rows selected (0.565 seconds)
 0: jdbc:hive2://localhost:10000>
 ```
+
+##### Finally import included Zepplin notebook and run all paragraphs
+
 ##### finished workflow
 ![Image](https://github.com/dbist/workshops/blob/master/nifi/templates/rdbms/screenshots/finished_workflow.png "finished workflow")
