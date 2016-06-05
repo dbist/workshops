@@ -1,4 +1,5 @@
 Tested using ambari-quickstart-guide https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
+Ambari 2.2.2.0 and HDP 2.4.2.0
 
 ------------------------------------
 1 A. Install IPA server on Linux VM 
