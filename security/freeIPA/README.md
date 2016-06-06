@@ -1,24 +1,24 @@
-Tested using ambari-quickstart-guide https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
+# Tested using ambari-quickstart-guide https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
 Ambari 2.2.2.0 and HDP 2.4.2.0
 
 ------------------------------------
 1 A. Install IPA server on Linux VM 
 ------------------------------------
 
-####Apply OS updates
+Apply OS updates
 `yum -y update`
 
-####turn off firewall
+turn off firewall
 ```
 service iptables save
 service iptables stop
 chkconfig iptables off
 ```
 
-####install IPA server
+install IPA server
 `yum install -y "*ipa-server" bind bind-dyndb-ldap`
 
-#add entry for ipa.hortonworks.com into the /etc/hosts file of the VM 
+add entry for ipa.hortonworks.com into the /etc/hosts file of the VM 
 #echo "192.168.191.198 ipa.hortonworks.com ipa" >> /etc/hosts
 
 #Run IPA setup: Hit enter 3 times to accept all defaults, then enter hortonworks as passwords, then enter Y to continue.
