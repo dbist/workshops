@@ -1,4 +1,5 @@
 # Intro
+created by Biren Saini
 
 # Concept 
 
@@ -22,7 +23,7 @@
 
 # Note
 
-Setup tested on HDP2.5.3
+Setup tested on HDP2.6.0
 
 
 # Usage 
