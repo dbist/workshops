@@ -1,0 +1,1 @@
+java -cp ./lib/phoenix-4.7.0.2.6.0.0-597-client.jar:./lib/log4j-1.2.17.jar:./target/ph-client-test.jar -Djava.security.auth.login.config=./auth/phoenix-client.jaas -Djava.security.krb5.conf=./auth/krb5.conf -Dsun.security.krb5.debug=true com.hortonworks.phoenix.PhClientTest
