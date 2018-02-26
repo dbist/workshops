@@ -47,7 +47,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.hortonworks.hbase.CreateTableWithSplits</mainClass>
+                            <mainClass>com.ervits.hbase.PutExample</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
