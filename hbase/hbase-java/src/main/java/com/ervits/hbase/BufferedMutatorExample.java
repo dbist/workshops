@@ -53,7 +53,7 @@ public class BufferedMutatorExample extends Configured implements Tool {
   private static final int POOL_SIZE = 10;
   private static final int TASK_COUNT = 100;
   private static final TableName TABLE = TableName.valueOf("table1");
-  private static final byte[] FAMILY = Bytes.toBytes("f");
+  private static final byte[] FAMILY = Bytes.toBytes("cf");
 
   @Override
   public int run(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
