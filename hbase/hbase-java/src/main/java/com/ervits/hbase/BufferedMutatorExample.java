@@ -35,6 +35,7 @@ import org.apache.hadoop.util.ToolRunner;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -88,7 +89,7 @@ public class BufferedMutatorExample extends Configured implements Tool {
             // step 2: each worker sends edits to the shared BufferedMutator instance. They all use
             // the same backing buffer, call-back "listener", and RPC executor pool.
             //
-            Put p = new Put(Bytes.toBytes("someRow"));
+            Put p = new Put(Bytes.toBytes(UUID.randomUUID().toString()));
             p.addColumn(FAMILY, Bytes.toBytes("someQualifier"), Bytes.toBytes("some value"));
             mutator.mutate(p);
             // do work... maybe you want to call mutator.flush() after many edits to ensure any of
