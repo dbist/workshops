@@ -30,15 +30,11 @@ public class ScannerExample {
         try (Connection connection = ConnectionFactory.createConnection(conf);
                 Table table = connection.getTable(TableName.valueOf("wiki"))) {
             String col = "title";
-            ResultScanner scanner = table.getScanner(col.getBytes());
-            while (true) {
-                if (scanner.next() != null) {
-                    Result result = scanner.next();
-                    System.out.println(result.toString());
+            try (ResultScanner scanner = table.getScanner(col.getBytes())) {
+                for (Result result = scanner.next(); result != null; result = scanner.next()) {
+                    System.out.println("Found row : " + result);
                 }
-
             }
-
         }
 
     }
