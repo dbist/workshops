@@ -29,7 +29,7 @@ public class ScannerExample {
         // conf.set("zookeeper.znode.parent", "/hbase-unsecure");
         try (Connection connection = ConnectionFactory.createConnection(conf);
                 Table table = connection.getTable(TableName.valueOf("wiki"))) {
-            String col = "title:.*$";
+            String col = "title";
             ResultScanner scanner = table.getScanner(col.getBytes());
             while (true) {
                 if (scanner.next() != null) {
