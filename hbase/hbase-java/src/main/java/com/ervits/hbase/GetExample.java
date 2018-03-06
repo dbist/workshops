@@ -9,6 +9,7 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.Arrays;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Result;
 
@@ -27,7 +28,7 @@ public class GetExample {
             Result r = table.get(get);
             byte[] b = r.getValue("title".getBytes(), "attr".getBytes());
 
-            System.out.println(b);
+            System.out.println(Arrays.toString(b));
         }
     }
 }
