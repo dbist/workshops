@@ -9,12 +9,12 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
-import java.util.Arrays;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Result;
 
 public class GetExample {
-
+    private static final byte[] CF = "title".getBytes();
+    private static final byte[] ATTR = "attr".getBytes();
     public static void main(String[] args) throws IOException {
         Configuration conf = HBaseConfiguration.create();
 
@@ -26,9 +26,9 @@ public class GetExample {
 
             Get get = new Get(Bytes.toBytes("row1"));
             Result r = table.get(get);
-            byte[] b = r.getValue("title".getBytes(), "attr".getBytes());
+            byte[] b = r.getValue(CF, ATTR);
 
-            System.out.println(Arrays.toString(b));
+            System.out.println(Bytes.toString(b));
         }
     }
 }
