@@ -24,7 +24,7 @@ public class GetExample {
         try (Connection connection = ConnectionFactory.createConnection(conf);
                 Table table = connection.getTable(TableName.valueOf("wiki"))) {
 
-            Get get = new Get(Bytes.toBytes("row1"));
+            Get get = new Get(Bytes.toBytes("r1"));
             Result r = table.get(get);
             byte[] b = r.getValue(CF, ATTR);
 
