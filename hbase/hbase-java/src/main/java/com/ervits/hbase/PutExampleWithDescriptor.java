@@ -39,7 +39,7 @@ public class PutExampleWithDescriptor {
             }
             admin.createTable(desc);
             byte[] key = Bytes.toBytes("row_x");
-            byte[] family = Bytes.toBytes("content:");
+            byte[] family = Bytes.toBytes("content");
             byte[] qualifier = Bytes.toBytes("qual");
             byte[] value = Bytes.toBytes("some content");
             Put put = new Put(key);
