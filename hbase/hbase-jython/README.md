@@ -1,14 +1,26 @@
-#### Jython Example
-```
-sudo mkdir /opt/jython
-export JYTHON_HOME=/opt/jython
-HBASE_CLASSPATH=$JYTHON_HOME/jython.jar hbase org.python.util.jython
-```
+#### Jython Example inspired by https://issues.apache.org/jira/browse/HBASE-18269
+
+
+#### create hbase table first
 
 ```
 create 'wiki', 'title'
 put 'wiki', 'r1', 'title:attr', 'val1'
 ```
+
+#### create jython environment variable
+
+```
+sudo mkdir /opt/jython
+export JYTHON_HOME=/opt/jython
+export HBASE_CLASSPATH=$JYTHON_HOME/jython.jar
+```
+
+#### start hbase shell with jython
+```
+hbase org.python.util.jython
+```
+
 ```
 import java.lang
 from org.apache.hadoop.hbase import TableName, HBaseConfiguration
@@ -20,18 +32,15 @@ admin = connection.getAdmin()
 tableName = TableName.valueOf('wiki')
 table = connection.getTable(tableName)
 
-# just to check whether table exists
-admin.tableExists(tableName)
-
-col = "title"
-scanner = table.getScanner(col)
+cf = "title"
+attr = "attr"
+scanner = table.getScanner(cf)
 while 1:
     result = scanner.next()
     if not result:
        break
-    print java.lang.String(result.row), java.lang.String(result.getValue('title', 'attr'))
+    print java.lang.String(result.row), java.lang.String(result.getValue(cf, attr))
 ```
-
 
 #### Example 2
 ```
@@ -47,9 +56,8 @@ conf = HBaseConfiguration.create()
 connection = ConnectionFactory.createConnection(conf)
 admin = connection.getAdmin()
 
-# Create a table named 'test' that has two column families,
-# one named 'content, and the other 'anchor'.  The colons
-# are required for column family names.
+# Create a table named 'test' that has a column family
+# named 'content'.
 tableName = TableName.valueOf("test")
 table = connection.getTable(tableName)
 
