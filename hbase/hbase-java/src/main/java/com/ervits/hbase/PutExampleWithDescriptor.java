@@ -49,7 +49,7 @@ public class PutExampleWithDescriptor {
             Get get = new Get(key);
             Result result = table.get(get);
             byte[] output = result.getValue(family, qualifier);
-            System.out.println(Bytes.toString(output));
+            System.out.println(String.format("Output is: %s", Bytes.toString(output)));
         }
     }
 }
