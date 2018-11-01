@@ -1,6 +1,7 @@
-## datasets from https://github.com/AbsaOSS/spline/tree/master/sample/data/input/batch
+##### datasets from https://github.com/AbsaOSS/spline/tree/master/sample/data/input/batch
 
-# Example 1:
+#### Example 1:
+
 ```
 import org.apache.spark.sql.{SaveMode, SparkSession}
 val sourceDS = spark.read.option("header","true").option("inferSchema","true").csv("/user/joe_analyst/wikidata.csv").as("source").filter($"total_response_size" > 1000).filter($"count_views" > 10)
@@ -9,8 +10,9 @@ val joinedDS = sourceDS.join(domainMappingDS, $"domain_code" ===$"d_code","left_
 joinedDS.write.mode(SaveMode.Overwrite).format("orc").save("/user/joe_analyst/sparkoutput")
 ```
 
-# Example 2:
-# data from https://www.tutorialspoint.com/spark_sql/spark_sql_hive_tables.htm
+#### Example 2:
+##### data from https://www.tutorialspoint.com/spark_sql/spark_sql_hive_tables.htm
+
 ```
 1201, satish, 25
 1202, krishna, 28
@@ -28,7 +30,7 @@ sqlContext.sql("LOAD DATA LOCAL INPATH 'employee.txt' INTO TABLE employee")
 sql("select * from employee").show()
 ```
 
-# Example 3:
+#### Example 3:
 
 ```
 import org.apache.spark.sql.SparkSession
