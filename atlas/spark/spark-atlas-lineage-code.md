@@ -10,26 +10,26 @@ joinedDS.write.mode(SaveMode.Overwrite).format("orc").save("/user/joe_analyst/sp
 
 # Example 2:
 # data from https://www.tutorialspoint.com/spark_sql/spark_sql_hive_tables.htm
-...
+```
 1201, satish, 25
 1202, krishna, 28
 1203, amith, 39
 1204, javed, 23
 1205, prudvi, 23
-...
+```
 
-...
+```
 val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
 sqlContext.sql("CREATE TABLE IF NOT EXISTS employee(id INT, name STRING, age INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'")
 sqlContext.sql("LOAD DATA LOCAL INPATH 'employee.txt' INTO TABLE employee")
 //val result = sqlContext.sql("FROM employee SELECT id, name, age")
 //result.show()
 sql("select * from employee").show()
-...
+```
 
 # Example 3:
 
-...
+```
 import org.apache.spark.sql.SparkSession
 import spark.implicits._
 import org.apache.spark.sql.{SaveMode, SparkSession}
@@ -46,4 +46,4 @@ trainData.write.mode(SaveMode.Overwrite).format("csv").save("/tmp/training_table
 
 spark.sql("LOAD DATA INPATH '/tmp/training_table.csv' INTO TABLE training_table")
 spark.sql("select * from training_table").show()
-...
+```
