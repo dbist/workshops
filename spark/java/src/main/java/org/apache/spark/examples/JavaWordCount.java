@@ -32,8 +32,8 @@ public final class JavaWordCount {
 
   public static void main(String[] args) throws Exception {
 
-    if (args.length < 1) {
-      System.err.println("Usage: JavaWordCount <file>");
+    if (args.length < 2) {
+      System.err.println("Usage: JavaWordCount <input> <output>");
       System.exit(1);
     }
 
@@ -51,6 +51,7 @@ public final class JavaWordCount {
     JavaPairRDD<String, Integer> counts = ones.reduceByKey((i1, i2) -> i1 + i2);
 
     List<Tuple2<String, Integer>> output = counts.collect();
+    counts.saveAsTextFile("hdfs://".concat(args[1]));
     for (Tuple2<?,?> tuple : output) {
       System.out.println(tuple._1() + ": " + tuple._2());
     }
