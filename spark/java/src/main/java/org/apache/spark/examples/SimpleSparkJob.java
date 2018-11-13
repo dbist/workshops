@@ -36,7 +36,7 @@ public class SimpleSparkJob {
                 public void call(Integer arg0) throws Exception {
                     Log.info("Value is " + arg0);
                     Configuration conf = new Configuration();
-                    Path filenamePath = new Path("/user/joe_analyst" + System.nanoTime() + ".xml");
+                    Path filenamePath = new Path("/user/joe_analyst/" + System.nanoTime() + ".xml");
                     FileSystem fileSystem = FileSystem.get(conf);
                     try (FSDataOutputStream fdos = fileSystem.create(filenamePath)) {
                         fdos.writeUTF(arg0 + "");
