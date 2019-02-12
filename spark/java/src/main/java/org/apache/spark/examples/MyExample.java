@@ -5,21 +5,12 @@
  */
 package org.apache.spark.examples;
 
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.broadcast.Broadcast;
-import org.apache.spark.sql.SQLContext;
-import org.apache.spark.sql.types.DataTypes;
+import java.io.IOException;
+import org.apache.spark.sql.AnalysisException;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
 import static org.apache.spark.sql.functions.col;
-import java.util.List;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import org.apache.spark.sql.AnalysisException;
 
 public class MyExample {
 
