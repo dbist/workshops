@@ -19,5 +19,6 @@ hdfs dfs -ls output/part-00000.deflate
 ```
 hdfs dfs -text output/part-00000.deflate | hdfs dfs -put - uncompressed_output
 ```
+```
 hdfs dfs -cat uncompressed_output
 ```
