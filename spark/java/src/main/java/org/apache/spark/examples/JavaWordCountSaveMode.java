@@ -26,8 +26,12 @@ import org.apache.spark.sql.SparkSession;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Encoders;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 
-public final class JavaWordCount {
+public final class JavaWordCountSaveMode {
   private static final Pattern SPACE = Pattern.compile(" ");
 
   public static void main(String[] args) throws Exception {
@@ -39,7 +43,7 @@ public final class JavaWordCount {
 
     SparkSession spark = SparkSession
       .builder()
-      .appName("JavaWordCount")
+      .appName("Spark Atlas Connector Java Example")
       .getOrCreate();
 
     JavaRDD<String> lines = spark.read().textFile(args[0]).javaRDD();
@@ -51,10 +55,13 @@ public final class JavaWordCount {
     JavaPairRDD<String, Integer> counts = ones.reduceByKey((i1, i2) -> i1 + i2);
 
     List<Tuple2<String, Integer>> output = counts.collect();
-    counts.saveAsTextFile(args[1]);
-    for (Tuple2<?,?> tuple : output) {
-      System.out.println(tuple._1() + ": " + tuple._2());   
-    }
+
+    //Dataset<Row> countsDF = spark.createDataset(JavaPairRDD.toRDD(counts), Encoders.tuple(Encoders.STRING(),Encoders.INT())).toDF();
+
+    Dataset<Row> outputDF = spark.createDataset(output, Encoders.tuple(Encoders.STRING(),Encoders.INT())).toDF();
+
+    outputDF.write().mode(SaveMode.Overwrite).json(args[1]);
+
     spark.stop();
   }
 }
