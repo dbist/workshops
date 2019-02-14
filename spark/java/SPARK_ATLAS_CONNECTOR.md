@@ -1,6 +1,6 @@
-#### following this doc https://docs.google.com/document/d/1zpCX6CB6BB-O-aJZTl4yEMJMt-3c9-T_0SmLvd6brQE/edit
-#### hortonia machine, run with export enable_knox_sso_proxy=false or command "sudo ambari-server setup-sso" and then say no
-#### in atlas ambari config, turn off proxy by unchecking "Enable Atlas Knox SSO" 
+##### following this doc https://docs.google.com/document/d/1zpCX6CB6BB-O-aJZTl4yEMJMt-3c9-T_0SmLvd6brQE/edit
+##### hortonia machine, run with export enable_knox_sso_proxy=false or command "sudo ambari-server setup-sso" and then say no
+##### in atlas ambari config, turn off proxy by unchecking "Enable Atlas Knox SSO" 
 
 ```
 knit -kt /etc/security/keytabs/joe_analyst.keytab joe_analyst/$(hostname -f)@HWX.COM
@@ -18,11 +18,11 @@ chmod 777 java-1.0-SNAPSHOT-jar-with-dependencies.jar
 --jars /tmp/spark-atlas-connector-assembly_2.11-0.1.0-SNAPSHOT.jar \
 java-1.0-SNAPSHOT-jar-with-dependencies.jar \
 hdfs://aervits-hortonia0:8020/user/joe_analyst/book \
-hdfs://aervits-hortonia0:8020/user/joe_analyst/output2
+hdfs://aervits-hortonia0:8020/user/joe_analyst/output
 ```
 
 ```
-hdfs dfs -ls output4/part-00000.deflate
-hdfs dfs -text output4/part-00000.deflate | hdfs dfs -put - uncompressed_output4
-hdfs dfs -cat uncompressed_output4
+hdfs dfs -ls output/part-00000.deflate
+hdfs dfs -text output/part-00000.deflate | hdfs dfs -put - uncompressed_output
+hdfs dfs -cat uncompressed_output
 ```
