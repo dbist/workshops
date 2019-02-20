@@ -1,6 +1,7 @@
-# https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/phoenix-data-access/content/saving_phoenix_tables.html
-# https://phoenix.apache.org/phoenix_spark.html
-# requires PHOENIX-5149
+#### https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/phoenix-data-access/content/saving_phoenix_tables.html
+#### https://phoenix.apache.org/phoenix_spark.html
+
+requires PHOENIX-5149
 
 ```
 $SPARK_HOME/bin/spark-shell \
