@@ -146,6 +146,7 @@ $SPARK_HOME/bin/spark-shell \
     --executor-memory 512m \
     --executor-cores 1 \
     --queue default \
+    --jars $PHOENIX_HOME/*.jar \
     --driver-class-path $PHOENIX_HOME/phoenix-4.14.1-HBase-1.4-client.jar:/etc/hbase/conf
 ```
 
