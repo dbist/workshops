@@ -117,3 +117,47 @@ df.write
 .option("zkUrl", "localhost:2181")
 .save()
 ```
+
+# PySpark
+
+```
+$SPARK_HOME/bin/pyspark \
+    --driver-class-path $PHOENIX_HOME/phoenix-4.14.1-HBase-1.4-client.jar:/etc/hbase/conf
+```
+
+# Save a DataFrame
+
+```
+df.write \
+  .format("org.apache.phoenix.spark") \
+  .mode("overwrite") \
+  .option("table", "TABLE1") \
+  .option("zkUrl", "localhost:2181") \
+  .save()
+```
+
+# PageRank Example
+
+```
+$SPARK_HOME/bin/spark-shell \
+    --master yarn \
+    --deploy-mode client \
+    --driver-memory 512m \
+    --executor-memory 512m \
+    --executor-cores 1 \
+    --queue default \
+    --driver-class-path $PHOENIX_HOME/phoenix-4.14.1-HBase-1.4-client.jar:/etc/hbase/conf
+```
+
+```
+import org.apache.spark.graphx._
+import org.apache.phoenix.spark._
+
+val rdd = sc.phoenixTableAsRDD("EMAIL_ENRON", Seq("MAIL_FROM", "MAIL_TO"), zkUrl=Some("localhost"))
+
+val rawEdges = rdd.map{ e => (e("MAIL_FROM").asInstanceOf[VertexId], e("MAIL_TO").asInstanceOf[VertexId]) }
+
+val graph = Graph.fromEdgeTuples(rawEdges,1.0)
+val pr = graph.pageRank(0.001)
+pr.vertices.saveToPhoenix("EMAIL_ENRON_PAGERANK", Seq("ID", "RANK"), zkUrl = Some("localhost"))
+```
