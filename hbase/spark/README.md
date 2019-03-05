@@ -52,9 +52,5 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
   classOf[org.apache.hadoop.hbase.io.ImmutableBytesWritable],
   classOf[org.apache.hadoop.hbase.client.Result])
 
-// works until here
-val count = rdd.count()
-count.show(5)
-
-// then errors, see HBASE-21452.
+ rdd.count()
 ```
