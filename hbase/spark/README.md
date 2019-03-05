@@ -7,17 +7,20 @@
 	3. HBase 2.1.3
 
 ```
+// old
 HBASE_PATH=`$HBASE_HOME/bin/hbase mapredcp`
-$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/lib/hbase-server-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-common-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-client-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/zookeeper-3.4.10.jar:/opt/hbase/hbase-2.1.3/lib/hbase-protocol-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-mapreduce-2.1.3.jar:/opt/hbase/hbase-2.1.3/conf:$HBASE_PATH
+$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/lib/hbase-server-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-common-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-client-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/zookeeper-3.4.10.jar:/opt/hbase/hbase-2.1.3/lib/hbase-protocol-2.1.3.jar:/opt/hbase/hbase-2.1.3/conf:$HBASE_PATH
+
+// new
+$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/conf:`hbase mapredcp`
 ```
 
 ```
  import org.apache.spark.{SparkConf, SparkContext}
  import org.apache.hadoop.hbase.HBaseConfiguration
  import org.apache.hadoop.hbase.mapreduce.TableInputFormat
- import org.apache.hadoop.hbase.client.HBaseAdmin
  import org.apache.hadoop.hbase.util.Bytes
- import org.apache.hadoop.hbase.client.{Put,HTable}
+ import org.apache.hadoop.hbase.client.Put
  import org.apache.hadoop.hbase.client.ConnectionFactory;
  import org.apache.hadoop.hbase.client.TableDescriptorBuilder
  import org.apache.hadoop.hbase.client.ColumnFamilyDescriptorBuilder
