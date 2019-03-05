@@ -53,38 +53,8 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
   classOf[org.apache.hadoop.hbase.client.Result])
 
 // works until here
-rdd.count()
+val count = rdd.count()
+count.show(5)
 
 // then errors, see HBASE-21452.
 ```
-
-```
-
-/*
-
- if(!admin.isTableAvailable(tablename)){
-	 print("creating table:"+tablename+"\t")
-	 val tableDescription = new HTableDescriptor(tablename)
-	 tableDescription.addFamily(new HColumnDescriptor("cf".getBytes()));
-	 admin.createTable(tableDescription);
- } else {
-	 print("table already exists")
- }
-
- val table = new HTable(conf,tablename);
- for(x <- 1 to 10){
-	 var p = new Put(new String("row" + x).getBytes());
-	 p.add("cf".getBytes(),"column1".getBytes(),new String("value" + x).getBytes());
-	 table.put(p);
- }
-
- val hBaseRDD = sc.newAPIHadoopRDD(conf, classOf[TableInputFormat],
-	 classOf[org.apache.hadoop.hbase.io.ImmutableBytesWritable],
-	 classOf[org.apache.hadoop.hbase.client.Result])
-
- val count = hBaseRDD.count()
- count.show(5)
-
- */
-
- ```
