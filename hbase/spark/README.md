@@ -51,7 +51,7 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 // works until here
 rdd.count()
 
-// then errors due to [HBASE-21452](https://issues.apache.org/jira/browse/HBASE-21452)
+// then errors due to (HBASE-21452)[https://issues.apache.org/jira/browse/HBASE-21452]
 ```
 
 ```
