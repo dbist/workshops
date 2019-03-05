@@ -54,14 +54,14 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 
  rdd.count()
 
-
  // Admin operations
  import org.apache.hadoop.hbase.TableName
 
+ // list tables shows truncated list of tables, confirm that's the case and
+ // not really showing the first table only.
  admin.listTables
-```
 
- #### shows first in the list only
+```
 
 ```
  warning: there was one deprecation warning; re-run with -deprecation for details
