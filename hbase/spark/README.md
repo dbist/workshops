@@ -6,13 +6,15 @@
 	2. Spark 2.3.3
 	3. HBase 2.1.3
 
-REQUIRES: [HBASE-21452](https://issues.apache.org/jira/browse/HBASE-21452)
+Requires: [HBASE-21452](https://issues.apache.org/jira/browse/HBASE-21452)
 
 ```
 // old
 HBASE_PATH=`$HBASE_HOME/bin/hbase mapredcp`
 $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/lib/hbase-server-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-common-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-client-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/zookeeper-3.4.10.jar:/opt/hbase/hbase-2.1.3/lib/hbase-protocol-2.1.3.jar:/opt/hbase/hbase-2.1.3/conf:$HBASE_PATH
+```
 
+```
 // new
 $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/conf:`hbase mapredcp`
 ```
@@ -53,7 +55,7 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 // works until here
 rdd.count()
 
-// then errors, see requirements.
+// then errors, see HBASE-21452.
 ```
 
 ```
