@@ -54,21 +54,18 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 
  rdd.count()
 
- // Admin operations
- import org.apache.hadoop.hbase.TableName
+ // list tables shows truncated list of tables
+ val tables = admin.listTables
 
- // list tables shows truncated list of tables, confirm that's the case and
- // not really showing the first table only.
- admin.listTables
+ for ( table <- tables) {
+  println(table);
+ }
 
-```
+// admin operations
+import org.apache.hadoop.hbase.TableName
 
-```
- warning: there was one deprecation warning; re-run with -deprecation for details
-res5: Array[org.apache.hadoop.hbase.HTableDescriptor] = Array('spark1551733349757', {NAME => 'cf', VERSIONS => '1', EVICT_BLOCKS_ON_CLOSE => 'false', NEW_VERSION_BEHAVIOR => 'false', KEEP_DELETED_CELLS => 'FALSE', CACHE_DATA_ON_WRITE => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', MIN_VERSIONS => '0', REPLICATION_SCOPE => '0', BLOOMFILTER => 'ROW', CACHE_INDEX_ON_WRITE => 'false', IN_MEMORY => 'false', CACHE_BLOOMS_ON_WRITE => 'false', PREFETCH_BLOCKS_ON_OPEN => 'false', COMPRESSION => 'NONE', BLOCKCACHE => 'true', BLOCKSIZE => '65536'}, 'spark1551733508699', {NAME => 'cf', VERSIONS => '1', EVICT_BLOCKS_ON_CLOSE => 'false', NEW_VERSION_BEHAVIOR => 'false', KEEP_DELETED_CELLS => 'FALSE', CACHE_DATA_ON_WRITE => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', MIN_VER...
-```
+admin.disableTable(TableName.valueOf("spark1551739989358"))
+admin.deleteTable(TableName.valueOf(spark1551739989358))
 
-```
-admin.disableTable(TableName.valueOf("spark1551733349757"))
-admin.deleteTable(TableName.valueOf("spark1551733349757"))
+//admin.deleteTable(table.getTableName())
 ```
