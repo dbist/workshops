@@ -4,19 +4,10 @@
 
 	1. Hadoop 2.7.7
 	2. Spark 2.3.3
-	3. HBase 2.1.3
-
-Requires: [HBASE-21452](https://issues.apache.org/jira/browse/HBASE-21452)
+	3. HBase 2.2.0
 
 ```
-// old
-HBASE_PATH=`$HBASE_HOME/bin/hbase mapredcp`
-$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/lib/hbase-server-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-common-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/hbase-client-2.1.3.jar:/opt/hbase/hbase-2.1.3/lib/zookeeper-3.4.10.jar:/opt/hbase/hbase-2.1.3/lib/hbase-protocol-2.1.3.jar:/opt/hbase/hbase-2.1.3/conf:$HBASE_PATH
-```
-
-```
-// new
-$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.1.3/conf:`hbase mapredcp`
+$SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-2.2.0/conf:`hbase mapredcp`
 ```
 
 ```
@@ -28,6 +19,7 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
  import org.apache.hadoop.hbase.client.ConnectionFactory;
  import org.apache.hadoop.hbase.client.TableDescriptorBuilder
  import org.apache.hadoop.hbase.client.ColumnFamilyDescriptorBuilder
+ import org.apache.hadoop.hbase.TableName
 
  val conf = HBaseConfiguration.create()
  val connection = ConnectionFactory.createConnection()
@@ -54,18 +46,23 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 
  rdd.count()
 
+ // figure out how to deserialize HBase Keys and Values in Scala to see output
+ // of rdd.take(1)
+
  // list tables shows truncated list of tables
  val tables = admin.listTables
+
+ // clean up
+ admin.disableTable(tn)
+ admin.deleteTable(tn)
 
  for ( table <- tables) {
   println(table);
  }
 
 // admin operations
-import org.apache.hadoop.hbase.TableName
-
 admin.disableTable(TableName.valueOf("spark1551739989358"))
-admin.deleteTable(TableName.valueOf(spark1551739989358))
+admin.deleteTable(TableName.valueOf("spark1551739989358"))
 
 //admin.deleteTable(table.getTableName())
 ```
