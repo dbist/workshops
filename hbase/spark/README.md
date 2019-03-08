@@ -46,6 +46,12 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
 
  rdd.count()
 
+ // view the first 5 records
+ rdd.map(_.toString()).take(5)
+
+ // convert ImmutableBytesWritable to String
+ rdd.map(_.toString()).collect().foreach(println)
+
  // figure out how to deserialize HBase Keys and Values in Scala to see output
  // of rdd.take(1)
 
