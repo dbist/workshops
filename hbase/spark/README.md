@@ -52,9 +52,6 @@ $SPARK_HOME/bin/spark-shell --conf spark.driver.extraClassPath=/opt/hbase/hbase-
  // convert ImmutableBytesWritable to String
  rdd.map(_.toString()).collect().foreach(println)
 
- // figure out how to deserialize HBase Keys and Values in Scala to see output
- // of rdd.take(1)
-
  // list tables shows truncated list of tables
  val tables = admin.listTables
 
