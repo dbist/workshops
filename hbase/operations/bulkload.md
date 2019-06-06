@@ -1,4 +1,4 @@
-Example to prepare and import HFiles
+# Example to prepare and import HFiles
 
 ##### create HFiles for loading, options exist to create table and load or create files first
 ##### upload the data.csv file to hdfs
