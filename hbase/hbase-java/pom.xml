@@ -10,8 +10,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <hadoop.version>2.7.5</hadoop.version>
-        <hbase.version>2.0.0-beta-1</hbase.version>
+        <hadoop.version>2.7.7</hadoop.version>
+        <hbase.version>1.4.9</hbase.version>
     </properties>
     
     <dependencies>
@@ -34,4 +34,36 @@
             <type>jar</type>
         </dependency>
     </dependencies>
+
+<!-- to run locally "java -jar target/hbase-java-1.0.0-jar-with-dependencies.jar com.ervits.hbase.HBaseAPI" -->
+<!-- uncomment the following to run locally -->
+<!--
+    <build>
+        <plugins>
+            <plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <configuration>
+                  <archive>
+                      <manifest>
+                          <addClasspath>true</addClasspath>
+                          <mainClass>com.ervits.hbase.HBaseAPI</mainClass>
+                      </manifest>
+                  </archive>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+              </configuration>
+              <executions>
+                  <execution>
+                      <id>make-my-jar-with-dependencies</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+        </plugins>
+    </build>
+-->
 </project>

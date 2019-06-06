@@ -1,0 +1,7 @@
+com/ervits/hbase/GetExample.class
+com/ervits/hbase/PutExampleWithDescriptor.class
+com/ervits/hbase/PutExample.class
+com/ervits/hbase/ScanExample.class
+com/ervits/hbase/HBaseAPI.class
+com/ervits/hbase/BufferedMutatorExample.class
+com/ervits/hbase/ScannerExample.class
