@@ -9,7 +9,7 @@
 
 `hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/user/vagrant/hfileoutput -Dimporttsv.columns=HBASE_ROW_KEY,cf:q -Dimporttsv.separator=, stocks_table data.csv`
 
-#### Note: this dataset may contain commas and _ImportTsv_ may interpret it as new columns and will report Bad lines=412, ignore
+#### Note: this dataset may contain commas and {ImportTsv} may interpret it as new columns and will report Bad lines=412, ignore
 #### it just means those records will be ignored.
 
 #### load the files when ready with the following command
@@ -48,4 +48,4 @@ ROW                                COLUMN+CELL
 5 row(s)
 Took 0.2513 seconds
 ```
-# TODO: figure out how to pre-split the table as this approach creates 1 region
+#### TODO: figure out how to pre-split the table as this approach creates 1 region
