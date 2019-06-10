@@ -13,7 +13,7 @@
 #### it just means those records will be ignored.
 
 #### table will be pre-created with utility but if user wants to perhaps pre-split, create table like so
-create 'stocks', 'cf', {SPLITS => ['aaaaaaaa', 'bbbbbbbb', 'cccccccc', 'dddddddd', 'eeeeeeee', 'ffffffff']}
+`create 'stocks', 'cf', {SPLITS => ['aaaaaaaa', 'bbbbbbbb', 'cccccccc', 'dddddddd', 'eeeeeeee', 'ffffffff']}`
 
 #### load the files when ready with the following command
 
