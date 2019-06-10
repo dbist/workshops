@@ -7,19 +7,22 @@
 
 #### prepare files with the following command
 
-`hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/user/vagrant/hfileoutput -Dimporttsv.columns=HBASE_ROW_KEY,cf:q -Dimporttsv.separator=, stocks_table data.csv`
+`hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.bulk.output=/user/vagrant/hfileoutput -Dimporttsv.columns=HBASE_ROW_KEY,cf:q -Dimporttsv.separator=, stocks data.csv`
 
 #### Note: this dataset may contain commas and _ImportTsv_ may interpret it as new columns and will report Bad lines=412, ignore
 #### it just means those records will be ignored.
 
+#### table will be pre-created with utility but if user wants to perhaps pre-split, create table like so
+create 'stocks', 'cf', {SPLITS => ['aaaaaaaa', 'bbbbbbbb', 'cccccccc', 'dddddddd', 'eeeeeeee', 'ffffffff']}
+
 #### load the files when ready with the following command
 
-`hbase completebulkload -Dcreate.table=no hfileoutput stocks_table`
+`hbase completebulkload -Dcreate.table=no hfileoutput stocks`
 
 #### table at this point should have 588 records
 
 ```
-hbase(main):004:0> count 'stocks_table', INTERVAL => 100
+hbase(main):004:0> count 'stocks', INTERVAL => 100
 Current count: 100, row: 2d8e972e-1aaf-4e56-8012-ec249be7b49a
 Current count: 200, row: 57938f42-36bb-4215-96ee-4454a2cf0940
 Current count: 300, row: 814692c9-5a8f-45f9-91dc-b17c2eca34df
@@ -33,7 +36,7 @@ Took 0.8229 seconds
 #### scan the table
 
 ```
-hbase(main):005:0> scan 'stocks_table', LIMIT => 5
+hbase(main):005:0> scan 'stocks', LIMIT => 5
 ROW                                COLUMN+CELL
  014ff67e-7065-4bc7-8eb7-7bb5c2d2e column=cf:q, timestamp=1559788188418, value=Nuveen All Cap Energy MLP Opportunities Fund
  865
