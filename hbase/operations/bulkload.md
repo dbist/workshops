@@ -15,7 +15,7 @@
 #### table will be pre-created with utility but if user wants to perhaps pre-split, create table like so
 `create 'stocks', 'cf', {SPLITS => ['aaaaaaaa', 'bbbbbbbb', 'cccccccc', 'dddddddd', 'eeeeeeee', 'ffffffff']}`
 
-#### now you can inspect the created HFiles with {hbase hfile} command
+#### now you can inspect the created HFiles with _hbase hfile_ command
 ```
 hbase hfile -h hfileoutput/cf/cda586348a0b4c0b9e5fa6af2f9b24be
 ...
