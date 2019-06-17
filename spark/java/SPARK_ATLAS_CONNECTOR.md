@@ -1,3 +1,13 @@
+Spark Atlas Connector
+ - no RDD level lineage, dataframe API only
+    This will not generate lineage https://github.com/dbist/workshops/blob/master/spark/java/src/main/java/org/apache/spark/examples/JavaWordCount.java#L54
+    This will generate lineage
+https://github.com/dbist/workshops/blob/master/spark/java/src/main/java/org/apache/spark/examples/JavaWordCountSaveMode.java#L61-L63
+ - no action/transformation information, code producing the lineage is not generated in Atlas
+ - client mode deployment only
+ - lineage will only be generated if files on HDFS or tables are created/deleted.
+The walkthrough is in this (doc): [https://github.com/dbist/workshops/blob/master/spark/java/SPARK_ATLAS_CONNECTOR.md]
+
 ##### following this doc https://docs.google.com/document/d/1zpCX6CB6BB-O-aJZTl4yEMJMt-3c9-T_0SmLvd6brQE/edit
 ##### hortonia machine, run with export enable_knox_sso_proxy=false or command "sudo ambari-server setup-sso" and then say no
 ##### in atlas ambari config, turn off proxy by unchecking "Enable Atlas Knox SSO" 
