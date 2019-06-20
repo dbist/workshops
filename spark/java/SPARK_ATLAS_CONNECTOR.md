@@ -7,7 +7,7 @@ Spark Atlas Connector
  - Client mode deployment only
  - Lineage will only be generated if files on HDFS or tables are created/deleted.
 
-following this [doc](https://docs.google.com/document/d/1lK7rP_hHWrIxe9upBi-wOYmqTc0aYXAWa5DhD6Y5E8w/edit)
+following this [doc](https://docs.google.com/document/d/1djBI7k7gUyrpaCzlosUngVuuUzHfzTObuM_EtbSwyZs/edit)
 
 ##### hortonia machine, run with export enable_knox_sso_proxy=false or command "sudo ambari-server setup-sso" and then say no
 ##### in atlas ambari config, turn off proxy by unchecking "Enable Atlas Knox SSO" 
