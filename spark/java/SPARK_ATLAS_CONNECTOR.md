@@ -13,7 +13,7 @@ following this [doc](https://docs.google.com/document/d/1lK7rP_hHWrIxe9upBi-wOYm
 ##### in atlas ambari config, turn off proxy by unchecking "Enable Atlas Knox SSO" 
 
 ```
-knit -kt /etc/security/keytabs/joe_analyst.keytab joe_analyst/$(hostname -f)@HWX.COM
+kinit -kt /etc/security/keytabs/joe_analyst.keytab joe_analyst/$(hostname -f)@HWX.COM
 wget -O book http://www.gutenberg.org/cache/epub/16215/pg16215.txt
 hdfs dfs -put book .
 chmod 777 java-1.0-SNAPSHOT-jar-with-dependencies.jar
