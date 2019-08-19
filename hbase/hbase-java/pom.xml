@@ -12,8 +12,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <hadoop.version>2.8.5</hadoop.version>
         <hbase.version>2.0.6</hbase.version>
-        <repo.id>hbase-2.0.6-rc1</repo.id>
-        <repo.url>https://repository.apache.org/content/repositories/orgapachehbase-1330/</repo.url>
+        <hbase.repo.url>https://repository.apache.org/content/repositories/orgapachehbase-1330/</hbase.repo.url>
     </properties>
     
     <dependencies>
@@ -39,8 +38,8 @@
 
     <repositories>
         <repository>
-            <id>${repo.id}</id>
-            <url>${repo.url}</url>
+            <id>${hbase.version}</id>
+            <url>${hbase.repo.url}</url>
         </repository>
   </repositories>
 
